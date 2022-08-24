@@ -10,5 +10,5 @@ public interface ContactServiceI {
 	
      List<Contact> getAllContact();
      Contact getContactById(Integer cid);
-     
+     public boolean updateContact(Contact contact);
 }
