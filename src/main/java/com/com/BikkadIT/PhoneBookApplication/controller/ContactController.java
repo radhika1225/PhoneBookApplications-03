@@ -3,9 +3,11 @@ package com.com.BikkadIT.PhoneBookApplication.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +70,16 @@ public ResponseEntity<String> UpdateContact(@RequestBody Contact contact){
 		
 	}
 }
+	@DeleteMapping(value="/deleteContactById/{cid}")
+	public ResponseEntity<String> deleteContactById(@PathVariable Integer cid){
+		boolean deleteById = contactServiceI.deleteById(cid);
+		if(deleteById) {
+			
+		return new ResponseEntity<String> ("Record deleted successfully",HttpStatus.OK);
+	}else {
+	
+		return new ResponseEntity<String> ("Record  not deleted successfully",HttpStatus.BAD_REQUEST);
 }
-
+}
+}
 
